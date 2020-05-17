@@ -1,0 +1,18 @@
+{
+  "name": "Newt Links",
+  "version": "1.0",
+  "description": "Extension to add links to Newt app pages",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["activeTab", "contextMenus", "webNavigation"],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css": ["newt.css"],
+      "js": ["linker.bundle.js"]
+    }
+  ]
+}

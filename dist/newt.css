@@ -1,0 +1,49 @@
+.newt-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999999;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newt-modal-content {
+  padding: 2rem;
+  background-color: white;
+  overflow: auto;
+  max-height: 80vh;
+  max-width: 600px;
+}
+
+.newt-modal-title {
+  font-size: 1.5rem;
+}
+
+.newt-search-input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.newt-page-button {
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  margin-right: 0;
+  background-color: #48bb78;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  padding: 0.5rem 1rem;
+}
+
+.newt-page-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
