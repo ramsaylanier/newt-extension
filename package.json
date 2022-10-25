@@ -1,15 +1,24 @@
 {
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.22.5",
     "babel-loader": "^8.1.0",
-    "graphql": "^15.0.0",
-    "simple-gql": "^0.1.5",
-    "webpack": "^4.43.0"
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.0.0",
+    "webpack": "^5.74.0"
   },
   "scripts": {
     "build": "webpack",
     "dev": "webpack --watch"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.11"
+    "@babel/core": "^7.19.6",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "html-loader": "^4.2.0",
+    "prettier": "^2.7.1",
+    "webpack-cli": "^4.10.0"
   }
 }

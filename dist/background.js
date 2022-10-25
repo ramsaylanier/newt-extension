@@ -1,15 +1,1 @@
-function handleClick() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, { method: "menuClicked" });
-  });
-}
-
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.contextMenus.create({
-    id: "nextContextMenu",
-    title: "Add selection to Newt",
-    contexts: ["selection"],
-  });
-});
-
-chrome.contextMenus.onClicked.addListener(handleClick);
+(()=>{function e(){chrome.storage.sync.get(["newtUser"])?chrome.action.setPopup({popup:"./popup_authenticated.html"}):chrome.action.setPopup({popup:"./popup.html"})}chrome.runtime.onInstalled.addListener((function(){e(),chrome.contextMenus.create({id:"nextContextMenu",title:"Add selection to Newt",contexts:["selection"]})})),chrome.contextMenus.onClicked.addListener((function(){chrome.tabs.query({active:!0,currentWindow:!0},(async function(e){chrome.tabs.sendMessage(e[0].id,{method:"menuClicked"})}))})),chrome.storage.onChanged.addListener(e)})();

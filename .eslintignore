@@ -1,0 +1,6 @@
+node_modules/
+*.css
+*.md
+*.json
+*.lock
+dist/

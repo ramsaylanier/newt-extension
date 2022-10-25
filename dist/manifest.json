@@ -1,18 +1,42 @@
 {
   "name": "Newt Links",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Extension to add links to Newt app pages",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
-  "permissions": ["activeTab", "contextMenus", "webNavigation"],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "webNavigation",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "linker.js"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
-      "css": ["newt.css"],
-      "js": ["linker.bundle.js"]
+      "matches": [
+        "*://*/*"
+      ],
+      "css": [
+        "newt.css"
+      ],
+      "run_at": "document_start",
+      "js": [
+        "linker.js"
+      ]
     }
   ]
 }
