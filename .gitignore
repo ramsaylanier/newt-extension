@@ -1,4 +1,4 @@
+dist/*.js
 node_modules/*
 config.prod.js
 *.map
-dist/*.js
