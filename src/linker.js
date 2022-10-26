@@ -1,6 +1,6 @@
 import modalHtml from "./modal.html";
 import { gql, GraphQLClient } from "graphql-request";
-// let selection = null;
+let selection = null;
 
 const client = new GraphQLClient("http://localhost:3000/api/graphql", {
   headers: {},
@@ -27,7 +27,7 @@ async function renderModal() {
   const { newtUser } = user;
   console.log({ newtUser });
 
-  // selection = window.getSelection().toString();
+  selection = window.getSelection().toString();
   document.body.insertAdjacentHTML("beforeend", modalHtml);
   modal = document.getElementById("newt-modal");
   // handle remove modal on background click
@@ -57,12 +57,6 @@ async function renderModal() {
     if (user) {
       const pages = await getPages({ newtUser });
       appendPagesToModalContent(pages, modalContent);
-      modalContent.addEventListener("click", (e) => {
-        if (e.target && e.target.nodeName === "BUTTON") {
-          addSelectionToPage(e.target.dataset.pageId);
-          modal.remove();
-        }
-      });
     }
   } catch (e) {
     console.log(e);
@@ -93,22 +87,37 @@ function appendPagesToModalContent(pages, modalContent) {
 
 async function addSelectionToPage(pageId) {
   if (pageId) {
-    // const mutation = `
-    //   mutation AddSelectionToPageContent(
-    //     $pageId: String!
-    //     $selection: String!
-    //   ) {
-    //     addSelectionToPageContent(pageId: $pageId, selection: $selection) {
-    //       _id
-    //       content
-    //     }
-    //   }
-    // `;
-    // const response = await client.request(mutation, {
-    //   pageId,
-    //   selection,
-    // });
-    // return response;
+    try {
+      const source = window.location.href;
+      const mutation = gql`
+        mutation AddSelectionToPageContent(
+          $pageId: String!
+          $selection: String!
+          $source: String!
+        ) {
+          addSelectionToPageContent(
+            pageId: $pageId
+            selection: $selection
+            source: $source
+          ) {
+            _id
+            content
+          }
+        }
+      `;
+
+      const response = await client.request(mutation, {
+        pageId,
+        selection,
+        source,
+      });
+
+      console.log({ response });
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
