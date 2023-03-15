@@ -4,7 +4,7 @@
     "babel-loader": "^8.1.0",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
-    "webpack": "^5.74.0"
+    "webpack": "^5.76.0"
   },
   "scripts": {
     "build": "webpack",
